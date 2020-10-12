@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentRepository;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -123,5 +124,10 @@ class Comment
         $this->photoFilename = $photoFilename;
 
         return $this;
+    }
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime('now');
     }
 }
