@@ -3,11 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Comment;
-use Doctrine\ORM\Mapping\AssociationOverride;
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -37,7 +36,7 @@ class CommentCrudController extends AbstractCrudController
             TextField::new('author'),
             TextField::new('email'),
             TextEditorField::new('text'),
-            DateTimeField::new('createdAt'),
+            DateTimeField::new('createdAt')->onlyOnIndex(),
             AssociationField::new('conference')
         ];
     }
